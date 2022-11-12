@@ -43,26 +43,22 @@ func FirstTurn(card1, card2, dealerCard string) string {
     DealerCard := ParseCard(dealerCard)
     var Sum int = Card1 + Card2
     switch {
-        case Sum == 21 && DealerCard != 10: //Black Jack with non figure card
-    		return "W"
-        case Sum == 21 && DealerCard != 11 : //Black Jack with non figure card
+        case Sum == 21 && DealerCard != 10 && DealerCard != 11: //Black Jack with non figure card
     		return "W"
         case Sum == 21 && DealerCard == 11 : //Black Jack with ten figure dealer
     		return "S"
-        case Sum == 21 && DealerCard == 10: //Black Jack with ten figure dealer
+        case Sum == 21 && DealerCard == 10 : //Black Jack with ten figure dealer
     		return "S"
-        case Card1 == 11 && Card2 == 11: //Pocket Aces
+        case Card1 == 11 && Card2 == 11 : //Pocket Aces
     		return "P"
-        case Sum >= 17 && Sum <= 20: //Greater than 17 but less than 20
+        case Sum >= 17 && Sum <= 20 : //Greater than 17 but less than 20
     		return "S"
-        case Sum >= 12 && Sum <= 16 && DealerCard < 7: //Greater than 12 but less than 16 and dealer has less than 7
+        case Sum >= 12 && Sum <= 16 && DealerCard < 7 : //Greater than 12 but less than 16 and dealer has less than 7
     		return "S"
-        case Sum >= 12 && Sum <= 16 && DealerCard >= 7: //Greater than 12 but less than 16 and dealer has greater than 7
+        case Sum >= 12 && Sum <= 16 && DealerCard >= 7 : //Greater than 12 but less than 16 and dealer has greater than 7
     		return "H"
-        case Sum <= 11:
+        case Sum <= 11 :
     		return "H"
     }
 	panic("Please implement the FirstTurn function")
 }
-
-//Pretty sure this works, i feel that the Exercism tests are being specific towards syntax (44/46 Successful).  Says that TestFirstTurn is failing when card1 = ace and card2 = jack with dealerCard = ace and expecting and "S" output. Similar problem with black jack and a dealer queen.
